@@ -2,8 +2,8 @@ import kotlin.math.round
 
 fun calculationAlgorithm (
     currentTransferAmount: Int,
-    accountCardType: String = "Mastercard",
-    previousAmountOfTransfersThisMonth: Int = 10_010_00
+    accountCardType: String = "Мир",
+    previousAmountOfTransfersThisMonth: Int = 600_00
 ): Int {
 
     val startCommissionAmount = round(((currentTransferAmount * cardCommissionSize(accountCardType,
@@ -39,14 +39,14 @@ fun cardCommissionSize(accountCardType: String, currentTransferAmount: Int): Dou
 
 fun isNoLimits(currentTransferAmount: Int, previousAmountOfTransfersThisMonth: Int): Boolean {
     return when {
-        (currentTransferAmount < 15_000_00 || previousAmountOfTransfersThisMonth < 40_000_000) -> true
-        (currentTransferAmount < 150_000_00 || previousAmountOfTransfersThisMonth < 600_000_00) -> true
+        (currentTransferAmount < 15_000_00 && previousAmountOfTransfersThisMonth < 40_000_000) -> true
+        (currentTransferAmount < 150_000_00 && previousAmountOfTransfersThisMonth < 600_000_00) -> true
         else -> false
     }
 }
 
 fun main() {
-    val currentTransferAmount = 80_000_00
+    val currentTransferAmount = 180_000_00
 
     println("Коммиссия равна ${calculationAlgorithm(currentTransferAmount) / 100} руб." +
             "${calculationAlgorithm(currentTransferAmount) % 100} коп.")
