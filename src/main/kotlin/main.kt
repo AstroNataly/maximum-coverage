@@ -9,14 +9,14 @@ fun calculationAlgorithm (
     val startCommissionAmount = round(((currentTransferAmount * cardCommissionSize(accountCardType,
         currentTransferAmount))/100)).toInt()
 
-    val commissionAmount = when (accountCardType) {
-        "Mastercard", "Maestro" -> if (currentTransferAmount < 7_500_000) startCommissionAmount
+    val commissionAmount = if (accountCardType == "Mastercard" || accountCardType == "Maestro") {
+        if (currentTransferAmount < 7_500_000) startCommissionAmount
         else startCommissionAmount + 20_00
-        "Visa", "Мир" -> if (currentTransferAmount >= (100 * 35_00 / 0.75)) startCommissionAmount
+    } else if (accountCardType == "Visa" || accountCardType == "Мир") {
+        if (currentTransferAmount >= (100 * 35_00 / 0.75)) startCommissionAmount
         else 35_00
-        else -> {
-            startCommissionAmount
-        }
+    } else {
+        startCommissionAmount
     }
 
     return when {
@@ -28,12 +28,12 @@ fun calculationAlgorithm (
 }
 
 fun cardCommissionSize(accountCardType: String, currentTransferAmount: Int): Double {
-    return when (accountCardType) {
-        "Mastercard", "Maestro" -> if (currentTransferAmount < 75_000_00) 0.00 else 0.6
-        "Visa", "Мир" -> 0.75
-        else -> {
-            0.0
-        }
+    return if (accountCardType == "Mastercard" || accountCardType == "Maestro") {
+        if (currentTransferAmount < 75_000_00) 0.00
+        else 0.6
+    } else if (accountCardType == "Visa" || accountCardType == "Мир") 0.75
+    else {
+        0.0
     }
 }
 
