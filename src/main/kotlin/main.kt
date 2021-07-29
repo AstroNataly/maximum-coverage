@@ -2,7 +2,7 @@ import kotlin.math.round
 
 fun calculationAlgorithm (
     currentTransferAmount: Int,
-    accountCardType: String = "Мир",
+    accountCardType: String = "Visa",
     previousAmountOfTransfersThisMonth: Int = 600_00
 ): Int {
 
@@ -46,7 +46,7 @@ fun isNoLimits(currentTransferAmount: Int, previousAmountOfTransfersThisMonth: I
 }
 
 fun main() {
-    val currentTransferAmount = 180_000_00
+    val currentTransferAmount = 60_000_00
 
     println("Коммиссия равна ${calculationAlgorithm(currentTransferAmount) / 100} руб." +
             "${calculationAlgorithm(currentTransferAmount) % 100} коп.")

@@ -10,7 +10,7 @@ class MainKtTest {
 
     @Test
     fun calculationAlgorithm_shouldAddCommission() {
-        val transferAmount = 80_000_00
+        val transferAmount = 60_000_00
         val cardType = "Visa"
         val amountOfTransfersThisMonth = 10_010_00
 
