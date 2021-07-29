@@ -19,7 +19,7 @@ class MainKtTest {
             accountCardType = cardType,
             previousAmountOfTransfersThisMonth = amountOfTransfersThisMonth
         )
-        assertEquals(600_00, result)
+        assertEquals(450_00, result)
     }
 
     @Test
